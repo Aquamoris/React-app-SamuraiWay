@@ -16,9 +16,9 @@ const App = (props) => {
                     <Routes>
                         <Route path='/profile'
                                element={<Profile
-                                   profilePage={props.state.profilePage}
-                                   addPost={props.addPost}
-                                   updateNewPostText={props.updateNewPostText}/>}/>
+                                   profilePage={props.state.profilePage} //props – объект чтобы передать в компоненту какие-то данные, тк это функции
+                                   dispatch={props.dispatch}
+                               />}/>
                         <Route path='/dialogs/*'
                                element={<Dialogs
                                    state={props.state.dialogsPage}/>}/>

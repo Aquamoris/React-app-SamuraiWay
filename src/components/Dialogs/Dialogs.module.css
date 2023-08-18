@@ -45,6 +45,7 @@
     border-radius: 50%;
     padding: 15px;
     display: table;
+    margin-left: auto;
 }
 
 .fromCompanion {
@@ -54,5 +55,4 @@
     border-radius: 50%;
     padding: 15px;
     display: table;
-    margin-left: auto;
 }

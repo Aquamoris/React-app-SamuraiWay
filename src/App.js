@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route, Routes, BrowserRouter} from "react-router-dom";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
     return (
@@ -16,13 +17,11 @@ const App = (props) => {
                     <Routes>
                         <Route path='/profile'
                                element={<Profile
-                                   profilePage={props.state.profilePage} //props – объект чтобы передать в компоненту какие-то данные, тк это функции
-                                   dispatch={props.dispatch}
+                                   store={props.store}
                                />}/>
                         <Route path='/dialogs/*'
-                               element={<Dialogs
-                                   state={props.state.dialogsPage}
-                                   dispatch={props.dispatch}/>}/>
+                               element={<DialogsContainer
+                                   store={props.store}/>}/>
                     </Routes>
                 </div>
             </div>

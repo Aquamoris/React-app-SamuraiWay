@@ -12,23 +12,19 @@ let initialState =  {
 };
 
 const profileReducer = (state = initialState, action) => {
-    switch (action.type) { // Reducer стал чистой функцией – Pure function
-        case ADD_POST: { // Для области видимости разных stateCopy через let, после будет рефакторинг
-            let newPost = {
-                id: 6,
-                message: state.newPostText,
-                likesCount: 0
-            }
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts]; // Обязательна глубокая копия после поверхностной
-            stateCopy.posts.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
+    switch (action.type) {
+        case ADD_POST: {
+            return {
+                ...state,
+                posts: [...state.posts, {id: 6, message: state.newPostText, likesCount: 0}],
+                newPostText: ''
+            };
         }
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText;
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         }
         default:
             return state;

@@ -5,17 +5,22 @@ import userPhoto from '../../assets/images/user.webp';
 
 const Users = (props) => {
 
-    if (props.users.length === 0) {
+    // Теперь нет Side effects, тк сама функция чистая, а внутри другая функция (callback)
+    // Отрисовка JSX, а что потом это потом
+    let getUsers = () => {
+        if (props.users.length === 0) {
 
-        axios
-            .get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {
-                props.setUsers(response.data.items);
-            });
+            axios
+                .get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.setUsers(response.data.items);
+                });
+        }
     }
 
     return (
         <div>
+            <button onClick={getUsers}>Get users</button>
             {
                 props.users.map(u => <div key={u.id}>
                     <span>

@@ -4,9 +4,6 @@ import axios from "axios";
 import userPhoto from '../../assets/images/user.webp';
 
 const Users = (props) => {
-
-    // Теперь нет Side effects, тк сама функция чистая, а внутри другая функция (callback)
-    // Отрисовка JSX, а что потом это потом
     let getUsers = () => {
         if (props.users.length === 0) {
 

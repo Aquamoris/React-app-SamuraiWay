@@ -4,10 +4,7 @@ import userPhoto from "../../assets/images/user.webp";
 import axios from "axios";
 
 class Users extends React.Component {
-
-    constructor(props) {
-        super(props);
-        // Убираем if, тк constructor вызывается ровно один раз
+    componentDidMount() {
         axios
             .get("https://social-network.samuraijs.com/api/1.0/users")
             .then(response => {

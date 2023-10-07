@@ -2,3 +2,13 @@
     width: 150px;
     height: 150px;
 }
+
+.selectedPage {
+    background-color: slategray;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.page {
+    margin: 0 3px;
+}

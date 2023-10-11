@@ -8,8 +8,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 class ProfileContainer extends React.Component{
 
     componentDidMount() {
-
-        //get id from URL
         let userId = this.props.router.params.userId;
 
         if (!userId) {
@@ -36,7 +34,6 @@ const mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 });
 
-//HOC withRouter v +6
 function withRouter(Component) {
     function ComponentWithRouterProps(props) {
         let location = useLocation();

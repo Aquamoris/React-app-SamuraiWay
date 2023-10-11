@@ -8,3 +8,14 @@ header img {
     width: 70px;
     padding: 10px;
 }
+
+.loginBlock {
+    float: right;
+    color: rgb(0, 216, 255);
+    font-weight: bold;
+}
+
+.loginBlock > a {
+    color: rgb(0, 216, 255);
+    text-decoration: none;
+}

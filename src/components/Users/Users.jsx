@@ -2,6 +2,7 @@ import React from 'react';
 import style from "./Users.module.css";
 import userPhoto from "../../assets/images/user.webp";
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 const Users = (props) => {
 
@@ -35,8 +36,40 @@ const Users = (props) => {
                         </div>
                         <div>
                             { u.followed
-                                ? <button onClick={() => { props.unfollow(u.id)} }>Unfollow</button>
-                                : <button onClick={() => { props.follow(u.id)} }>Follow</button> }
+                                ? <button onClick={() => {
+
+                                    axios
+                                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                            withCredentials: true,
+                                            headers: {
+                                                "API-KEY": "932c6beb-48e7-4801-a0a3-2ad7ddba21dd"
+                                            }
+                                        })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                // Только если сервер подтвердил, то отправляем в state
+                                                props.unfollowUser(u.id);
+                                            }
+                                        })
+
+                                }}>Unfollow</button>
+                                : <button onClick={() => {
+
+                                    axios
+                                        .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                            withCredentials: true,
+                                            headers: {
+                                                "API-KEY": "932c6beb-48e7-4801-a0a3-2ad7ddba21dd"
+                                            }
+                                        })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                // Только если сервер подтвердил, то отправляем в state
+                                                props.followUser(u.id);
+                                            }
+                                        })
+
+                                }}>Follow</button> }
                         </div>
                     </span>
                     <span>

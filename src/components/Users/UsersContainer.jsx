@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import {
-    follow,
+    followUser,
     setCurrentPage,
     setTotalUsersCount,
     setUsers, toggleIsFetching,
-    unfollow
+    unfollowUser
 } from "../../redux/usersReducer";
 import React from "react";
 import axios from "axios";
@@ -15,7 +15,9 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)
         axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -27,7 +29,9 @@ class UsersContainer extends React.Component {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true)
         axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -61,8 +65,8 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
     setUsers,
-    follow,
-    unfollow,
+    followUser,
+    unfollowUser,
     setCurrentPage,
     setTotalUsersCount,
     toggleIsFetching,

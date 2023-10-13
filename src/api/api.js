@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// Создаём сущности для работы с этой API
 const instace = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
@@ -10,8 +9,6 @@ const instace = axios.create({
 })
 
 export const usersAPI = {
-
-    // Упаковали как метод
     getUsers(currentPage = 1, pageSize = 10) {
         return instace
             .get(`users?page=${currentPage}&count=${pageSize}`)
@@ -19,13 +16,30 @@ export const usersAPI = {
     }
 }
 
+export const authAPI = {
+    getAuth() {
+        return instace
+            .get('auth/me')
+            .then(response => response.data);
+    }
+}
 
-// Вариант без упаковки, но лучше упаковать
-// Передаём значения по умолчанию
-export const getUsers = (currentPage = 1, pageSize = 10) => {
+export const followAPI = {
+    follow(id) {
+        if (id) {
+            return instace
+                .post(`follow/${id}`)
+                .then(response => response.data);
+        }
+    }
+}
 
-    // Обязательно делаем return чтобы вернуть Promise
-    return instace
-        .get(`users?page=${currentPage}&count=${pageSize}`)
-        .then(response => response.data); // Берем сразу data
+export const unfollowAPI = {
+    unfollow(id) {
+        if (id) {
+            return instace
+                .delete(`follow/${id}`)
+                .then(response => response.data);
+        }
+    }
 }

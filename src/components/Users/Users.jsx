@@ -47,7 +47,6 @@ const Users = (props) => {
                                         })
                                         .then(response => {
                                             if (response.data.resultCode === 0) {
-                                                // Только если сервер подтвердил, то отправляем в state
                                                 props.unfollowUser(u.id);
                                             }
                                         })
@@ -64,7 +63,6 @@ const Users = (props) => {
                                         })
                                         .then(response => {
                                             if (response.data.resultCode === 0) {
-                                                // Только если сервер подтвердил, то отправляем в state
                                                 props.followUser(u.id);
                                             }
                                         })

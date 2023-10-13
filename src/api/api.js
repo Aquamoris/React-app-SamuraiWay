@@ -26,20 +26,16 @@ export const authAPI = {
 
 export const followAPI = {
     follow(id) {
-        if (id) {
             return instace
                 .post(`follow/${id}`)
                 .then(response => response.data);
-        }
     }
 }
 
 export const unfollowAPI = {
     unfollow(id) {
-        if (id) {
             return instace
                 .delete(`follow/${id}`)
                 .then(response => response.data);
-        }
     }
 }

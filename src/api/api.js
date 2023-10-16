@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instace = axios.create({
+const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {
@@ -10,32 +10,26 @@ const instace = axios.create({
 
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
-        return instace
+        return instance
             .get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(response => response.data);
+    },
+    follow(id) {
+        return instance
+            .post(`follow/${id}`)
+            .then(response => response.data);
+    },
+    unfollow(id) {
+        return instance
+            .delete(`follow/${id}`)
             .then(response => response.data);
     }
 }
 
 export const authAPI = {
     getAuth() {
-        return instace
+        return instance
             .get('auth/me')
             .then(response => response.data);
-    }
-}
-
-export const followAPI = {
-    follow(id) {
-            return instace
-                .post(`follow/${id}`)
-                .then(response => response.data);
-    }
-}
-
-export const unfollowAPI = {
-    unfollow(id) {
-            return instace
-                .delete(`follow/${id}`)
-                .then(response => response.data);
     }
 }

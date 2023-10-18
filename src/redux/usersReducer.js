@@ -76,9 +76,6 @@ export const toggleFollowingProgress = (isFetching, userId) => (
     {type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}
 );
 
-//Thunks
-// Замыкания => вернули thunk
-// В нашем случае это ThunkCreator
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));

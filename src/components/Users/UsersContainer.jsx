@@ -10,9 +10,7 @@ import Preloader from "../common/Preloader/Preloader";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        // Наша компонента теперь не занимается менеджментом
 
-        // ThunkCreator
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
 
     }
@@ -20,7 +18,6 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
 
-        // ThunkCreator
         this.props.getUsers(pageNumber, this.props.pageSize);
 
     }

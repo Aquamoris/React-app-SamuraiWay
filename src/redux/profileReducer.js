@@ -1,3 +1,5 @@
+import {profileAPI} from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
@@ -46,5 +48,12 @@ export const updateNewPostText = (text) =>
 
 export const setUsersProfile = (profile) =>
     ({ type: SET_USERS_PROFILE, profile });
+
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId)
+            .then(data => dispatch(setUsersProfile(data)));
+    }
+}
 
 export default profileReducer;

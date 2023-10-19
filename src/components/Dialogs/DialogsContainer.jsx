@@ -10,8 +10,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-const AuthRedirectComponent = withAuthRedirect(Dialogs);
-
-const DialogsContainer = connect(mapStateToProps, { updateNewMessageBody, sendMessage })(AuthRedirectComponent);
+const DialogsContainer = withAuthRedirect(connect(mapStateToProps, { updateNewMessageBody, sendMessage })(Dialogs));
 
 export default DialogsContainer;

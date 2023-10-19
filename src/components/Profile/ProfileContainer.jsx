@@ -2,7 +2,8 @@ import React from "react";
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import {getUserProfile} from "../../redux/profileReducer";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component{
 
@@ -25,9 +26,11 @@ class ProfileContainer extends React.Component{
     }
 }
 
+// HOC с нужным параметром
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth
+    profile: state.profilePage.profile
 });
 
 function withRouter(Component) {
@@ -42,4 +45,4 @@ function withRouter(Component) {
     return ComponentWithRouterProps;
 }
 
-export default connect(mapStateToProps, {getUserProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, {getUserProfile})(withRouter(AuthRedirectComponent));

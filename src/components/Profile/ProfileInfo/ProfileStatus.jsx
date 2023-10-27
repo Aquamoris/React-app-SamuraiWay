@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 const ProfileStatus = (props) => {
-
+    const [status, setStatus] = useState(props.status);
     const [editMode, setEditMode] = useState(false);
 
     const activateEditMode = () => {
@@ -10,16 +10,21 @@ const ProfileStatus = (props) => {
 
     const deactivateEditMode = () => {
         setEditMode(false);
+        props.updateUserStatus(status);
+    }
+
+    const onInputChange = (e) => {
+        setStatus(e.currentTarget.value);
     }
 
     return (
         <div>
             {editMode
                 ? <div>
-                    <input autoFocus={true} onBlur={deactivateEditMode} value={props.status}/>
+                    <input onChange={onInputChange} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
                 </div>
                 : <div>
-                    <span onDoubleClick={ activateEditMode }>{props.status}</span>
+                    <span onDoubleClick={ activateEditMode }>Status: {status || '------'}</span>
                 </div>}
         </div>
 

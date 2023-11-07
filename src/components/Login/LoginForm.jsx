@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import YupPassword from "yup-password";
 YupPassword(Yup)
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -18,10 +18,9 @@ const LoginForm = () => {
                 .email('Invalid email address'),
             password: Yup.string()
                 .required('Password is required')
-                .password(),
         }),
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            props.login(values.email, values.password, values.remember);
         },
     });
 

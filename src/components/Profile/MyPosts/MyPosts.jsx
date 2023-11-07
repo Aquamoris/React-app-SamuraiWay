@@ -1,30 +1,22 @@
 import React from "react";
 import Post from './Post/Post';
 import s from './MyPosts.module.css';
+import NewPostForm from "./NewPostForm";
 
 const MyPosts = (props) => {
     let postsElements  = props.posts.map(p => <Post key={p.id} message={p.message} likes={p.likesCount} />)
 
-    let newPostElement = React.createRef();
-    let onAddPost = () => {
-        props.addPost();
-    }
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+    let onAddPost = (newPost) => {
+        props.addPost(newPost);
     }
 
     return (
         <div className={s.postsBlock}>
             <h3>My Posts</h3>
             <div>
-                <div>
-                    <textarea onChange={ onPostChange } ref={newPostElement} value={props.newPostText} />
-                </div>
-                <div>
-                    <button onClick={ onAddPost }>Add</button>
-                </div>
+                <NewPostForm
+                    onAddPost={onAddPost}
+                />
             </div>
             <div className={s.posts}>
                 { postsElements }

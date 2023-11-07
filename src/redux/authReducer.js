@@ -35,4 +35,9 @@ export const getAuthUserData = () => (dispatch) => {
     })
 }
 
+export const userLogin = (email, password) => (dispatch) => {
+    authAPI
+        .userLogin(email, password).then(data => console.log(data));
+}
+
 export default authReducer;

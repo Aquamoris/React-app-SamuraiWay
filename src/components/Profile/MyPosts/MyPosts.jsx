@@ -5,7 +5,9 @@ import NewPostForm from "./NewPostForm";
 
 const MyPosts = React.memo((props) => {
     console.log('RENDER YO');
-    let postsElements  = props.posts.map(p => <Post key={p.id} message={p.message} likes={p.likesCount} />)
+    let postsElements  = [...props.posts]
+        .reverse()
+        .map(p => <Post key={p.id} message={p.message} likes={p.likesCount} />)
 
     let onAddPost = (newPost) => {
         props.addPost(newPost);

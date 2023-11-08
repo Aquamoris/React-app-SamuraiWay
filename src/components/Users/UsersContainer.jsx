@@ -9,6 +9,7 @@ import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {getUsersFakeFilterSelector} from "../../redux/selectors/users-selector";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -42,7 +43,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
+        users: getUsersFakeFilterSelector(state),
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,

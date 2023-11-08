@@ -1,12 +1,12 @@
 import {usersAPI} from "../api/api";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const FOLLOW = 'social-media/users/FOLLOW';
+const UNFOLLOW = 'social-media/users/UNFOLLOW';
+const SET_USERS = 'social-media/users/SET-USERS';
+const SET_CURRENT_PAGE = 'social-media/users/SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'social-media/users/SET-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'social-media/users/TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'social-media/users/TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState =  {
     users: [ ],

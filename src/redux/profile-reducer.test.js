@@ -23,8 +23,6 @@ it('message of new post should be correct', () => {
 
     expect(newState.posts[4].message).toBe('fifth-post');
 });
-
-// TDD test driving development
 it('after deleting length should be decremented', () => {
     let action = deletePost(1);
 

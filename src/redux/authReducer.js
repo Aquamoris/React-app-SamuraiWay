@@ -1,6 +1,6 @@
 import {authAPI} from "../api/api";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'social-media/auth/SET_USER_DATA';
 
 let initialState = {
     userId: null,

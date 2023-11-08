@@ -12,7 +12,6 @@ const ProfileStatus = (props) => {
         setEditMode(false);
         props.updateUserStatus(status);
     }
-
     const onInputChange = (e) => {
         setStatus(e.currentTarget.value);
     }

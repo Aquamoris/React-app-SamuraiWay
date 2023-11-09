@@ -1,0 +1,9 @@
+.selectedPage {
+    background-color: slategray;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.page {
+    margin: 0 3px;
+}
